@@ -1,0 +1,14 @@
+.list_column {
+  flex: 1;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    background-color: white;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}

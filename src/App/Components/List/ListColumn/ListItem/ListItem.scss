@@ -1,0 +1,47 @@
+.list_item {
+  background-color: white;
+  border: 1px solid black;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  column-gap: 10px;
+  cursor: pointer;
+
+  p, h3 {
+    margin: 0;
+  }
+
+  :first-child {
+    text-align: start;
+
+    label {
+      input {
+        width: auto;
+        margin-right: 10px;
+      }
+
+      h3 {
+        display: inline;
+      }
+    }
+  }
+
+  :last-child {
+    text-align: end;
+
+    select {
+      margin-bottom: 5px;
+    }
+
+    p {
+      color: grey;
+      font-size: 10px;
+      margin-top: 5px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 24px 8px;
+  }
+}

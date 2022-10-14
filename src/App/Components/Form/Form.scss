@@ -1,0 +1,24 @@
+form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 45px;
+
+  .input_wrapper {
+    flex: 1;
+    margin-right: 15px;
+
+    .title_wrapper {
+      display: flex;
+      margin-bottom: 15px;
+
+      :first-child {
+        flex: 2;
+        margin-right: 15px;
+      }
+
+      :last-child {
+        flex: 1;
+      }
+    }
+  }
+}
