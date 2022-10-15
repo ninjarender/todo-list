@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Form from './Components/Form/Form'
 import List from './Components/List/List'
@@ -50,10 +50,12 @@ export default () => {
       <header>
         <img src="https://edita.com.eg/wp-content/uploads/2020/06/todo-logo.png" alt="logo" />
       </header>
-      <main>
-        <Form createTodo={createTodo} />
-        <List todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
-      </main>
+      <React.StrictMode>
+        <main>
+          <Form createTodo={createTodo} />
+          <List todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+        </main>
+      </React.StrictMode>
     </div>
   );
 }
