@@ -1,19 +1,45 @@
-import './Form.scss'
-import Input from '../Shared/Input/Input.jsx'
-import TextArea from '../Shared/TextArea/TextArea.jsx'
-import Button from '../Shared/Button/Button.jsx'
+import { useState, createRef } from 'react' 
 
-export default () => {
+import './Form.scss'
+
+export default (props) => {
+  const [title, setTitle] = useState()
+  const [description, setDescription] = useState()
+
+  let titleRef = createRef()
+  let descriptionRef = createRef()
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+
+    props.createTodo(title, description)
+
+    setTitle('')
+    titleRef.current.value = ''
+    setDescription('')
+    descriptionRef.current.value = ''
+  }
+
   return(
-    <form>
-      <div className="input_wrapper">
-        <div className="title_wrapper">
-          <Input title="Title" type="text" required="required" />
-          <Input title="Estimate" type="text" required="required" />
-        </div>
-        <TextArea title="Description" />
-      </div>
-      <Button name='Add' />
+    <form onSubmit={submitHandler}>
+      <label>
+        <span>Title</span>
+        <input 
+          type='text'
+          ref={titleRef}
+          defaultValue={title}
+          onChange={() => setTitle(titleRef.current.value)}
+          required
+        />
+      </label>
+      <label>
+        <span>Description</span>
+        <textarea
+          ref={descriptionRef}
+          defaultValue={description}
+          onChange={() => setDescription(descriptionRef.current.value)}></textarea>
+      </label>
+      <button type="submit">Add</button>
     </form>
   )
 }

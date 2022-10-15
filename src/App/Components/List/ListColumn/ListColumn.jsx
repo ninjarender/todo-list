@@ -6,7 +6,11 @@ export default (props) => {
     <div className="list_column">
       <h2>{props.name}</h2>
       <ul>
-        <ListItem />
+        {props.todos.map(todo => {
+          return(
+            <ListItem key={todo.id} todo={todo} />
+          )
+        })}
       </ul>
     </div>
   )

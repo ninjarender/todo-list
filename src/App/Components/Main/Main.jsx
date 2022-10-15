@@ -1,11 +1,11 @@
 import Form from '../Form/Form.jsx'
 import List from '../List/List.jsx'
 
-export default () => {
+export default (props) => {
   return(
     <main>
-      <Form />
-      <List />
+      <Form createTodo={props.createTodo} />
+      <List todos={props.todos} />
     </main>
   )
 }

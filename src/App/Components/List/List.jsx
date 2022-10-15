@@ -1,59 +1,16 @@
 import './List.scss'
 import ListColumn from './ListColumn/ListColumn.jsx'
 
-export default () => {
+export default (props) => {
+  let newTodos = props.todos.filter(todo => todo.status === "todo")
+  let progressTodos = props.todos.filter(todo => todo.status === "in_progress")
+  let doneTodos = props.todos.filter(todo => todo.status === "done")
+
   return(
     <div className="list_wrapper">
-      <ListColumn name="TODO" />
-      <ListColumn name="IN PROGRESS" />
-      <ListColumn name="DONE" />
-
-      {/* <div className="list_column">
-        <h2></h2>
-        <ul>
-          <li>
-            <div>
-              <label>
-                <input type="checkbox" />
-                <h3>Ticket title</h3>
-              </label>
-              <p>Ticket Description</p>
-            </div>
-            <div>
-              <select defaultValue="in_progress">
-                <option value="todo">ToDo</option>
-                <option value="in_progress">In progress</option>
-                <option value="done">Done</option>
-              </select>
-              <p>Start: today</p>
-              <p>End: yesterday</p>
-            </div>
-          </li>
-        </ul>
-      </div> */}
-      {/* <div className="list_column">
-        <h2>DONE</h2>
-        <ul>
-          <li>
-            <div>
-              <label>
-                <input type="checkbox" />
-                <h3>Ticket title</h3>
-              </label>
-              <p>Ticket Description</p>
-            </div>
-            <div>
-              <select defaultValue="done">
-                <option value="todo">ToDo</option>
-                <option value="in_progress">In progress</option>
-                <option value="done">Done</option>
-              </select>
-              <p>Started: today</p>
-              <p>Ended: yesterday</p>
-            </div>
-          </li>
-        </ul>
-      </div> */}
+      <ListColumn name="TODO" todos={newTodos} />
+      <ListColumn name="IN PROGRESS" todos={progressTodos} />
+      <ListColumn name="DONE" todos={doneTodos} />
     </div>
   )
 }
