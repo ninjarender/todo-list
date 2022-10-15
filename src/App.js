@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import './App.scss';
-import Header from './App/Components/Header/Header';
-import Main from './App/Components/Main/Main'
+import Main from './Components/Main/Main'
 
-export default () => {
+const App = () => {
   const [todos, setTodos] = useState([])
 
   const createTodo = (title, description) => {
@@ -32,8 +31,12 @@ export default () => {
 
   return (
     <div className="App">
-      <Header />
+      <header>
+        <img src="https://edita.com.eg/wp-content/uploads/2020/06/todo-logo.png" alt="logo" />
+      </header>
       <Main todos={todos} createTodo={createTodo} />
     </div>
   );
 }
+
+export default App
