@@ -8,7 +8,7 @@ export default (props) => {
       <ul>
         {props.todos.map(todo => {
           return(
-            <ListItem key={todo.id} todo={todo} />
+            <ListItem key={todo.id} todo={todo} updateTodo={props.updateTodo} deleteTodo={props.deleteTodo} />
           )
         })}
       </ul>

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 
+import Form from './Components/Form/Form'
+import List from './Components/List/List'
+
 import './App.scss';
-import Main from './Components/Main/Main'
 
 export default () => {
   const [todos, setTodos] = useState([])
@@ -12,10 +14,25 @@ export default () => {
       title: title,
       description: description,
       status: "todo",
-      created_at: new Date()
     }
 
     setTodos([newTodoItem, ...todos]);
+  }
+
+  const updateTodo = (id, status) => {
+    todos.find(todo => {
+      if (todo.id === id) {
+        todo.status = status
+      }
+
+      return setTodos([...todos])
+    })
+  }
+
+  const deleteTodo = (id) => {
+    let newTodos = todos.filter(todo => todo.id !== id)
+
+    setTodos([...newTodos])
   }
 
   useEffect(() => {
@@ -33,7 +50,10 @@ export default () => {
       <header>
         <img src="https://edita.com.eg/wp-content/uploads/2020/06/todo-logo.png" alt="logo" />
       </header>
-      <Main todos={todos} createTodo={createTodo} />
+      <main>
+        <Form createTodo={createTodo} />
+        <List todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+      </main>
     </div>
   );
 }

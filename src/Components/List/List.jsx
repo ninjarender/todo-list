@@ -1,16 +1,15 @@
+import ListColumn from './ListColumn/ListColumn'
+
 import './List.scss'
-import ListColumn from './ListColumn/ListColumn.jsx'
 
 export default (props) => {
-  let newTodos = props.todos.filter(todo => todo.status === "todo")
-  let progressTodos = props.todos.filter(todo => todo.status === "in_progress")
-  let doneTodos = props.todos.filter(todo => todo.status === "done")
+  let newTodos = props.todos.filter(todo => todo.status === 'todo')
+  let progressTodos = props.todos.filter(todo => todo.status === 'in_progress')
 
   return(
-    <div className="list_wrapper">
-      <ListColumn name="TODO" todos={newTodos} />
-      <ListColumn name="IN PROGRESS" todos={progressTodos} />
-      <ListColumn name="DONE" todos={doneTodos} />
+    <div className='list_wrapper'>
+      <ListColumn name='TODO' todos={newTodos} updateTodo={props.updateTodo} deleteTodo={props.deleteTodo} />
+      <ListColumn name='IN PROGRESS' todos={progressTodos} updateTodo={props.updateTodo} deleteTodo={props.deleteTodo} />
     </div>
   )
 }
