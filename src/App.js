@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './App.scss';
 import Main from './Components/Main/Main'
 
-const App = () => {
+export default () => {
   const [todos, setTodos] = useState([])
 
   const createTodo = (title, description) => {
@@ -19,15 +19,14 @@ const App = () => {
   }
 
   useEffect(() => {
-		localStorage.setItem('todos', JSON.stringify(todos));
-	}, [todos])
+    const todos = JSON.parse(localStorage.getItem('todos'))
+
+    setTodos(todos)
+	}, [])
 
   useEffect(() => {
-    const todos = JSON.parse(localStorage.getItem('todos'));
-		if (todos) {
-			setTodos(todos)
-		}
-	}, [])
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}, [todos])
 
   return (
     <div className="App">
@@ -38,5 +37,3 @@ const App = () => {
     </div>
   );
 }
-
-export default App
